@@ -19,7 +19,9 @@ pipeline_name = f"Stack filtering pipeline {team_name}"
 pipeline_description = "A pipeline for filtering the stack dataset"
 
 # Initialize pipeline and client
-pipeline = Pipeline(pipeline_name=pipeline_name, base_path=PipelineConfigs.BASE_PATH)
+pipeline = Pipeline(pipeline_name=pipeline_name,
+                    pipeline_description=pipeline_description,
+                    base_path=PipelineConfigs.BASE_PATH)
 client = Client(host=PipelineConfigs.HOST)
 
 load_from_hub_op = ComponentOp(
@@ -32,16 +34,8 @@ your_custom_component_op = ComponentOp(
     arguments={},  # TODO: insert your component's arguments here
 )
 
-write_to_hub_op = ComponentOp(
-    name="write_to_hub_stack",
-    arguments={"username": "ml6team",
-               "dataset_name": f"{team_name}-the-stack-smol-processed",
-               "hf_token": hf_token},
-)
-
 pipeline.add_op(load_from_hub_op)
 # TODO: Add your component to the pipeline
 pipeline.add_op(your_custom_component_op, dependencies=load_from_hub_op)
-pipeline.add_op(write_to_hub_op, dependencies=your_custom_component_op)
 
 client.compile_and_run(pipeline=pipeline)
