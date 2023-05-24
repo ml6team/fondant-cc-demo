@@ -1,0 +1,27 @@
+name: PII detection
+description: A component that detects Personal Identifiable Information (PII) in code.
+image: ghcr.io/ml6team/pii_detection:latest
+
+consumes:
+  code:
+    fields:
+      content:
+        type: string
+
+produces:
+  code:
+    fields:
+      secrets:
+        type: string
+      has_secrets:
+        type: bool
+      number_secrets:
+        type: int64
+
+args:
+  batch_size:
+    description: Batch size to use for processing
+    type: int
+  num_proc:
+    description: Number of CPU cores to use
+    type: int

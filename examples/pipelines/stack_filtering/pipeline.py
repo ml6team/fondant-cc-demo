@@ -1,4 +1,5 @@
 """Pipeline used to create a filtered stack dataset using custom components."""
+
 import logging
 import sys
 
@@ -28,6 +29,10 @@ load_from_hub_op = ComponentOp(
     name="load_from_hub_stack",
     arguments={"dataset_name": "ml6team/the-stack-smol"},
 )
+pii_detection_op = ComponentOp(
+    name="pii_detection",
+    arguments={"dataset_name": "ml6team/the-stack-smol"},
+)
 
 your_custom_component_op = ComponentOp(
     name="your_custom_component",  # TODO: rename to the same name of your component
@@ -35,7 +40,7 @@ your_custom_component_op = ComponentOp(
 )
 
 pipeline.add_op(load_from_hub_op)
-# TODO: Add your component to the pipeline
-pipeline.add_op(your_custom_component_op, dependencies=load_from_hub_op)
+pipeline.add_op(pii_detection_op, dependencies=load_from_hub_op)
+# TODO: Add more components to the pipeline
 
 client.compile_and_run(pipeline=pipeline)
