@@ -34,8 +34,7 @@ class FilterMetadataComponent(TransformComponent):
         Returns:
             Filtered dask dataframe
         """
-        print("columns")
-        print(dataframe.columns)
+
         filtered_df = dataframe[
             (dataframe['texts_avg_line_length'] > avg_line_length_threshold) &
             (dataframe['texts_max_line_length'] > max_line_length_threshold) &
