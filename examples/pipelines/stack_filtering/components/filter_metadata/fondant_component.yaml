@@ -1,0 +1,54 @@
+name: Filter metadata components
+description: Component that filters the metadata
+image: ghcr.io/ml6team/filter_metadata:latest
+
+consumes:
+  texts:
+    fields:
+      content:
+        type: string
+      lang:
+        type: string
+      size:
+        type: int32
+      path:
+        type: string
+      repository_name:
+        type: string
+      avg_line_length:
+        type: float64
+      max_line_length:
+        type: int32
+      alphanum_fraction:
+        type: float64
+
+produces:
+  texts:
+    fields:
+      content:
+        type: string
+      lang:
+        type: string
+      size:
+        type: int32
+      path:
+        type: string
+      repository_name:
+        type: string
+      avg_line_length:
+        type: float64
+      max_line_length:
+        type: int32
+      alphanum_fraction:
+        type: float64
+
+args:
+  avg_line_length_threshold:
+    description: Name of dataset on the hub
+    type: int
+  max_line_length_threshold:
+    description: Name of dataset on the hub
+    type: int
+  alphanum_fraction_threshold:
+    description: Name of dataset on the hub
+    type: float
