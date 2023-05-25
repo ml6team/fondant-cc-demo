@@ -9,3 +9,8 @@ output "ca_certificate" {
   sensitive   = true
   value       = module.gke-cluster.ca_certificate
 }
+
+output "service_account" {
+  description = "main cluster service account"
+  value = google_service_account.kfp-pipeline-user
+}

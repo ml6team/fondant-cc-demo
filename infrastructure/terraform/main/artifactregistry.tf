@@ -21,3 +21,13 @@ resource "google_artifact_registry_repository" "kfp_template_artifact" {
 
   depends_on = [google_project_service.artifactregistry]
 }
+
+
+resource "google_storage_bucket" "cloudbuild" {
+  name                        = "${var.project}_cloudbuild_artifacts"
+  location                    = var.region
+  uniform_bucket_level_access = true
+  versioning {
+    enabled = true
+  }
+}
