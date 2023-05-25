@@ -33,10 +33,11 @@ pii_redaction_op = ComponentOp(
     name="pii_redaction",
 )
 
-your_custom_component_op = ComponentOp(
-    name="your_custom_component",  # TODO: rename to the same name of your component
-    arguments={},  # TODO: insert your component's arguments here
-)
+# TODO: add more components
+# your_custom_component_op = ComponentOp(
+#     name="your_custom_component",  # TODO: rename to the same name of your component
+#     arguments={},  # TODO: insert your component's arguments here
+# )
 
 pipeline.add_op(load_from_hub_op)
 pipeline.add_op(pii_redaction_op, dependencies=load_from_hub_op)

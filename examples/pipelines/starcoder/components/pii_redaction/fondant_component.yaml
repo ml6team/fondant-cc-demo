@@ -13,3 +13,5 @@ produces:
     fields:
       content:
         type: string
+    additionalFields: False
+  additionalSubsets: False
