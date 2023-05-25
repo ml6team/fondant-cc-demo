@@ -46,6 +46,20 @@ locals {
       accelerator_count         = 0,
       local_ssd_ephemeral_count = 0
     },
+    {
+      name         = "work-pool",
+      machine_type = "n1-standard-2",
+      disk_type    = "pd-standard",
+      disk_size    = 100,
+      autoscaling  = true,
+      preemptible  = false,
+      node_count                = 3,
+      min_count                 = 0,
+      max_count                 = 100,
+      accelerator_type          = "",
+      accelerator_count         = 0,
+      local_ssd_ephemeral_count = 0
+    },
   ]
 }
 
@@ -59,7 +73,7 @@ module "gke_cluster" {
   zone                       = var.zone
   region                     = var.region
   node_pools                 = local.node_pools
-  cluster_name               = "kfp-express"
+  cluster_name               = "fondant-cluster"
   master_ipv4_cidr_block     = "172.16.0.0/28"
   master_authorized_networks = var.master_authorized_networks
   ip_range_pods_name         = module.vpc-network.subnets_secondary_ranges[0]

@@ -114,7 +114,7 @@ resource "google_storage_bucket_iam_binding" "artifact_binding" {
     "serviceAccount:${google_service_account.kfp-pipeline-user.email}"
   ]
 
-  role = "roles/storage.objectAdmin"
+  role = "roles/storage.admin"
 }
 
 /******************************************
