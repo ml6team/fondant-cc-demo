@@ -13,7 +13,7 @@ class CustomComponent(TransformComponent):
     def transform(
         self,
         dataframe: dd.DataFrame,
-        *,
+        # *,
         # TODO: Add arguments here
     ) -> dd.DataFrame:
         """

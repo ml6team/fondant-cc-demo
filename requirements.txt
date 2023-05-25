@@ -1,0 +1,2 @@
+fondant[pipelines]==0.1.0
+jupyter==1.0.0
