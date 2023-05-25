@@ -1,6 +1,6 @@
 name: Filter metadata
 description: Component that filters code based on metadata
-image: ghcr.io/ml6team/filter_metadata:latest
+image: europe-west4-docker.pkg.dev/boreal-array-387713/boreal-array-387713-default-repository/components/filter_metadata:latest
 
 consumes:
   code:
