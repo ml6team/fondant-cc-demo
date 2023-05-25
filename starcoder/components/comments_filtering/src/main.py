@@ -20,11 +20,11 @@ class FilterMetadataComponent(TransformComponent):
     """
 
     def transform(
-            self,
-            *,
-            dataframe: dd.DataFrame,
-            min_comments_ratio: float,
-            max_comments_ratio: float
+        self,
+        *,
+        dataframe: dd.DataFrame,
+        min_comments_ratio: float,
+        max_comments_ratio: float
     ) -> dd.DataFrame:
         """
         Args:
@@ -37,9 +37,11 @@ class FilterMetadataComponent(TransformComponent):
 
         # Apply the function to the desired column and filter the DataFrame
         filtered_df = dataframe[
-            dataframe['code_content']
-            .map_partitions(lambda example: example.map(get_comments_to_code_ratio)
-            .between(min_comments_ratio, max_comments_ratio))
+            dataframe["code_content"].map_partitions(
+                lambda example: example.map(get_comments_to_code_ratio).between(
+                    min_comments_ratio, max_comments_ratio
+                )
+            )
         ]
 
         return filtered_df

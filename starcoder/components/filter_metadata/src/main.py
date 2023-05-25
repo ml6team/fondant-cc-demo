@@ -18,12 +18,12 @@ class FilterMetadataComponent(TransformComponent):
     """
 
     def transform(
-            self,
-            *,
-            dataframe: dd.DataFrame,
-            avg_line_length_threshold: int,
-            max_line_length_threshold: int,
-            alphanum_fraction_threshold: float
+        self,
+        *,
+        dataframe: dd.DataFrame,
+        avg_line_length_threshold: int,
+        max_line_length_threshold: int,
+        alphanum_fraction_threshold: float
     ) -> dd.DataFrame:
         """
         Args:
@@ -36,10 +36,10 @@ class FilterMetadataComponent(TransformComponent):
         """
 
         filtered_df = dataframe[
-            (dataframe['code_avg_line_length'] > avg_line_length_threshold) &
-            (dataframe['code_max_line_length'] > max_line_length_threshold) &
-            (dataframe['code_alphanum_fraction'] > alphanum_fraction_threshold)
-            ]
+            (dataframe["code_avg_line_length"] > avg_line_length_threshold)
+            & (dataframe["code_max_line_length"] > max_line_length_threshold)
+            & (dataframe["code_alphanum_fraction"] > alphanum_fraction_threshold)
+        ]
 
         return filtered_df
 

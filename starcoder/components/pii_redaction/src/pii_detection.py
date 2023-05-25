@@ -38,5 +38,5 @@ def scan_pii(text, key_detector="other"):
     # to add this as new columns to datasets we need the same number of samples in each row
     # we save secrets as json strings instead of lists
     matches, has_secrets = postprocess_secrets(secrets)
-    
+
     return matches, has_secrets, len(secrets)
