@@ -55,7 +55,7 @@ ip_pattern = (
 
 # Note: to reduce false positives, a number of technically-valid-but-rarely-used
 # email address patterns (e.g. with parenthesis or slashes) will not match
-email_pattern = r'''
+email_pattern = r"""
     (?<= ^ | [[({<\b\s@,?!;'"\p{Han}¿¡:.] | \\['"] )  # left delimiter
     (
       (?:                                             # local part
@@ -77,7 +77,7 @@ email_pattern = r'''
       (?: [\p{L}\p{M}]{2,63} | xn-- \w+ )             # TLD, including IDN
     )
     (?= $ | [])}>\b\s@,?!;'"\p{Han}] | \\['"] | : (?! \d) | \. (?! \S))   # right delim
-'''
+"""
 
 
 def get_regexes(high_risk_tags={"EMAIL", "IP_ADDRESS", "KEY"}):
@@ -124,9 +124,9 @@ def matches_date_pattern(matched_str):
 def filter_versions(matched_str, context):
     """Filter addresses in this format x.x.x.x  and the words dns/server
     don't appear in the neighboring context, usually they are just versions"""
-    # count occurrence of dots 
-    dot_count = matched_str.count('.')
-    exclude = (dot_count == 3 and len(matched_str) == 7) 
+    # count occurrence of dots
+    dot_count = matched_str.count(".")
+    exclude = dot_count == 3 and len(matched_str) == 7
     if exclude:
         if "dns" in context.lower() or "server" in context.lower():
             return False
@@ -134,7 +134,7 @@ def filter_versions(matched_str, context):
 
 
 def not_ip_address(matched_str):
-    """ make sure the string has a valid IP address format
+    """make sure the string has a valid IP address format
     e.g: 33.01.33.33 is not a valid IP address because of the 0 in front of 1
     TODO: fix this directly in the regex"""
     try:
@@ -149,7 +149,7 @@ def is_gibberish(matched_str):
     # pip install gibberish-detector
     # download the training corpora from https://raw.githubusercontent.com/domanchi/gibberish-detector/master/examples/big.txt
     # run gibberish-detector train big.txt > big.model to generate the model (it takes 3 seconds)
-    Detector = detector.create_from_model('gibberish_data/big.model')
+    Detector = detector.create_from_model("gibberish_data/big.model")
     return Detector.is_gibberish(matched_str.lower())
 
 
@@ -181,11 +181,13 @@ def detect_email_addresses(content, tag_types={"EMAIL", "IP_ADDRESS"}):
                 if value:
                     if tag == "IP_ADDRESS":
                         # Filter out false positive IPs
-                        if not ip_has_digit(value) :
+                        if not ip_has_digit(value):
                             continue
                         if matches_date_pattern(value):
                             continue
-                        if filter_versions(value, content[start-100:end+100]) or  not_ip_address(value):
+                        if filter_versions(
+                            value, content[start - 100 : end + 100]
+                        ) or not_ip_address(value):
                             continue
                         # combine if conditions in one
 

@@ -6,7 +6,13 @@ import ipaddress
 
 # List of random private IP addresses to use as replacements
 REPLACEMENTS_IP = {
-    "IPv4": ["172.16.31.10", "172.16.58.3", "172.16.17.32", "192.168.127.12", "192.168.3.11"],
+    "IPv4": [
+        "172.16.31.10",
+        "172.16.58.3",
+        "172.16.17.32",
+        "192.168.127.12",
+        "192.168.3.11",
+    ],
     "IPv6": [
         "fd00:c2b6:b24b:be67:2827:688d:e6a1:6a3b",
         "fd00:a516:7c1b:17cd:6d81:2137:bd2a:2c5b",
@@ -110,7 +116,9 @@ def redact_pii_text(text, secrets, replacements, add_references=False):
             # skip secret if it's an IP address for private networks or popular DNS servers
             if secret["tag"] == "IP_ADDRESS":
                 # if secret value in popular DNS servers, skip it
-                if is_private_ip(secret["value"]) or (secret["value"] in POPULAR_DNS_SERVERS):
+                if is_private_ip(secret["value"]) or (
+                    secret["value"] in POPULAR_DNS_SERVERS
+                ):
                     continue
             modified = True
             subtext = text[step : secret["start"]]
@@ -139,16 +147,18 @@ def redact_pii_text(text, secrets, replacements, add_references=False):
     else:
         new_text = text
         references = ""
-    result = (new_text, references, modified) if add_references else (new_text, modified)
+    result = (
+        (new_text, references, modified) if add_references else (new_text, modified)
+    )
     return result
 
 
 def redact_pii(text, secrets, has_secrets, replacements):
     """Anonymize PII in an example from a dataset.
-    
+
     Slightly modified to only return the potentially updated text.
     """
-    
+
     if has_secrets:
         new_text, _ = redact_pii_text(text, secrets, replacements)
         return new_text

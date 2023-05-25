@@ -48,7 +48,7 @@ def is_gibberish(matched_str):
     # pip install gibberish-detector
     # download the training corpora from https://raw.githubusercontent.com/domanchi/gibberish-detector/master/examples/big.txt
     # run gibberish-detector train big.txt > big.model to generate the model (it takes 3 seconds)
-    Detector = detector.create_from_model('gibberish_data/big.model')
+    Detector = detector.create_from_model("gibberish_data/big.model")
     return Detector.is_gibberish(matched_str.lower())
 
 
@@ -61,7 +61,7 @@ def is_hash(content, value):
         # TODO: fix this issue happened one for JS in the stack-smol, file did contain value
         print("Value not found in content, why this happened?")
         return False
-    lines = content[:content.index(value)].splitlines()
+    lines = content[: content.index(value)].splitlines()
     target_line = lines[-1]
     if len(value) in [32, 40, 64]:
         # if "sha" or "md5" are in content:
@@ -70,7 +70,8 @@ def is_hash(content, value):
             return True
     return False
 
-def file_has_hashes(content, coeff = 0.02):
+
+def file_has_hashes(content, coeff=0.02):
     """Checks if the file contains literals 'hash' or 'sha' for more than 2% nb_of_lines"""
     lines = content.splitlines()
     count_sha = 0
@@ -83,6 +84,7 @@ def file_has_hashes(content, coeff = 0.02):
         if count_sha > threshold or count_hash > threshold:
             return True
     return False
+
 
 def get_indexes(text, value):
     string = text
