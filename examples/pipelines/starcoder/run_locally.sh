@@ -5,6 +5,6 @@ python main.py --metadata "$METADATA" --output_manifest_path /Users/nielsrogge/D
 
 cd ..
 cd ..
-cd pii_detection/src
+cd pii_redaction/src
 ls
-python main.py --metadata "$METADATA" --input_manifest_path /Users/nielsrogge/Documents/fondant_artifacts_starcoder/manifest/load_from_hub_stack/manifest.txt --output_manifest_path /Users/nielsrogge/Documents/fondant_artifacts_starcoder/manifest/pii_detection/manifest.txt 
+python main.py --metadata "$METADATA" --input_manifest_path /Users/nielsrogge/Documents/fondant_artifacts_starcoder/manifest/load_from_hub_stack/manifest.txt --output_manifest_path /Users/nielsrogge/Documents/fondant_artifacts_starcoder/manifest/pii_redaction/manifest.txt 

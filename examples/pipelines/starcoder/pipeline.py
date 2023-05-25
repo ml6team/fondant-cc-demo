@@ -29,8 +29,8 @@ load_from_hub_op = ComponentOp(
     name="load_from_hub_stack",
     arguments={"dataset_name": "ml6team/the-stack-smol-python"},
 )
-pii_detection_op = ComponentOp(
-    name="pii_detection",
+pii_redaction_op = ComponentOp(
+    name="pii_redaction",
 )
 
 your_custom_component_op = ComponentOp(
@@ -39,7 +39,7 @@ your_custom_component_op = ComponentOp(
 )
 
 pipeline.add_op(load_from_hub_op)
-pipeline.add_op(pii_detection_op, dependencies=load_from_hub_op)
+pipeline.add_op(pii_redaction_op, dependencies=load_from_hub_op)
 # TODO: Add more components to the pipeline
 
 client.compile_and_run(pipeline=pipeline)
