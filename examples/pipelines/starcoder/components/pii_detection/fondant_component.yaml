@@ -1,5 +1,5 @@
 name: PII detection
-description: A component that detects Personal Identifiable Information (PII) in code.
+description: A component that detects and redacts Personal Identifiable Information (PII) from code.
 image: ghcr.io/ml6team/pii_detection:latest
 
 consumes:
@@ -11,9 +11,5 @@ consumes:
 produces:
   code:
     fields:
-      secrets:
+      content:
         type: string
-      has_secrets:
-        type: bool
-      number_secrets:
-        type: int16
