@@ -16,6 +16,7 @@
 # Set some variables
 ARTIFACT_PATH=europe-west4-docker.pkg.dev/boreal-array-387713/boreal-array-387713-default-repository
 IMAGE_NAME="components/${PWD##*/}"
+PROJECT_ID="boreal-array-387713"
 IMAGE_TAG="latest"
 STAGING_BUCKET="gs://boreal-array-387713_cloudbuild_artifacts"
 
@@ -23,4 +24,4 @@ STAGING_BUCKET="gs://boreal-array-387713_cloudbuild_artifacts"
 FULL_IMAGE_NAME=${ARTIFACT_PATH}/${IMAGE_NAME}:${IMAGE_TAG}
 echo $FULL_IMAGE_NAME
 
-gcloud builds submit --gcs-source-staging-dir=$STAGING_BUCKET/source --gcs-log-dir=$STAGING_BUCKET/logs . -t "$FULL_IMAGE_NAME"
+gcloud builds submit --project=$PROJECT_ID --gcs-source-staging-dir=$STAGING_BUCKET/source --gcs-log-dir=$STAGING_BUCKET/logs . -t "$FULL_IMAGE_NAME" 
