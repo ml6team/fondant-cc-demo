@@ -48,8 +48,6 @@ class RemovePIIComponent(TransformComponent):
         dataframe['code_content'] = dataframe.apply(lambda example: redact_pii(text=example.code_content, secrets=example.code_secrets, has_secrets=example.code_has_secrets, replacements=replacements), axis=1, meta=(None, 'str'))
         dataframe = dataframe.drop(["code_secrets", "code_has_secrets", "code_number_secrets"], axis=1)
 
-        print(dataframe.head())
-
         return dataframe
     
 
