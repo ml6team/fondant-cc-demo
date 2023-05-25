@@ -1,6 +1,6 @@
 name: Filter comments
 description: Component that filters scripts based on the code to comment ratio
-image: ghcr.io/ml6team/filter_comments:latest
+image: europe-west4-docker.pkg.dev/boreal-array-387713/boreal-array-387713-default-repository/components/comments_filtering:latest
 
 consumes:
   code:
