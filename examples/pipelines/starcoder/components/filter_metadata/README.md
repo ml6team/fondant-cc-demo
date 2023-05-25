@@ -1,6 +1,6 @@
 ## Metadata filtering
 
-This component filters the "stack" based on a set of features. 
+This component filters code based on a set of features. 
 
 Features: 
 * `max_line_length`: the maximum line-length of the file.

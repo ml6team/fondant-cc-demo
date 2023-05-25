@@ -1,5 +1,5 @@
 """
-This component loads the stack dataset from the hub.
+This component loads a code dataset from a remote location on the Hugging Face hub.
 """
 
 import logging

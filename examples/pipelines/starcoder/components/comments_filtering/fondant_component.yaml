@@ -1,6 +1,6 @@
-name: Comments filtering
+name: Filter comments
 description: Component that filters scripts based on the code to comment ratio
-image: ghcr.io/ml6team/comment_filtering:latest
+image: ghcr.io/ml6team/filter_comments:latest
 
 consumes:
   code:

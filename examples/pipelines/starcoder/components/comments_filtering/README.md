@@ -1,4 +1,4 @@
-## Comments filtering
+## Filter comments
 
 This component filters the code based on code to comment ratio. The main motivation is to clean the
 datasets

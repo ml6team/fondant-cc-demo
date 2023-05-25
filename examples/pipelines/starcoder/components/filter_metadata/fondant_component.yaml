@@ -1,5 +1,5 @@
-name: Filter metadata components
-description: Component that filters the metadata
+name: Filter metadata
+description: Component that filters code based on metadata
 image: ghcr.io/ml6team/filter_metadata:latest
 
 consumes:

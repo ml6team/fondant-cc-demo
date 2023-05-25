@@ -1,3 +1,3 @@
-## Load from hub
+## Load code dataset from hub
 
-This component loads the "stack" dataset from a remote location on the huggingface hub. 
+This component loads a code dataset from a remote location on the Hugging Face hub.

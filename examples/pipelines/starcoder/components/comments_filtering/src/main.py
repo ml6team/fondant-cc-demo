@@ -1,5 +1,6 @@
 """
-This component filters images of the dataset based on image size (minimum height and width).
+This component estimates the comment to code ratio and filters instances between two chosen
+minimum and maximum values
 """
 import logging
 
@@ -15,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class FilterMetadataComponent(TransformComponent):
     """
-    Component that filters images based on height and width.
+    Component that filters instances based on specified metadata
     """
 
     def transform(
