@@ -26,19 +26,8 @@ load_from_hub_op = ComponentOp(
     component_spec_path="components/load_from_hub_stack/fondant_component.yaml",
     arguments={"dataset_name": "ml6team/the-stack-smol-python"},
 )
-filter_metadata_op = ComponentOp(
-    component_spec_path="components/filter_metadata/fondant_component.yaml",
-    arguments={
-        "avg_line_length_threshold": 10,
-        "max_line_length_threshold": 100,
-        "alphanum_fraction_threshold": 0.25,
-    },
-)
-comments_filtering_op = ComponentOp(
-    component_spec_path="components/comments_filtering/fondant_component.yaml",
-    arguments={"min_comments_ratio": 0.1, "max_comments_ratio": 0.9},
-)
-# TODO: Add your custom component op
+
+# TODO: add your component here
 # your_custom_component_op = ComponentOp(
 #     component_spec_path="components/your_custom_component/fondant_component.yaml",
 #     arguments={},  # TODO: insert your component's arguments here
@@ -48,9 +37,8 @@ pii_redaction_op = ComponentOp(
     component_spec_path="components/pii_redaction/fondant_component.yaml",
 )
 pipeline.add_op(load_from_hub_op)
-pipeline.add_op(filter_metadata_op, dependencies=load_from_hub_op)
-pipeline.add_op(comments_filtering_op, dependencies=filter_metadata_op)
-# TODO: Add your custom component to the pipeline
+# TODO: Add your component op to the pipeline
+# pipeline.add_op(comments_filtering_op, dependencies=your_custom_component_op)
 pipeline.add_op(pii_redaction_op, dependencies=load_from_hub_op)
 
 client.compile_and_run(pipeline=pipeline)

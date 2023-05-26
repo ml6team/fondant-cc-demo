@@ -6,7 +6,7 @@ The code is based on the PII removal code used as part of the [BigCode project](
 
 ### PII detection
 
-The component detects emails, IP addresses and API/SSH keys in text datasets (in particular datasets of source code). Regexes are used for emails and IP addresses (they are adapted from [BigScience PII pipeline](https://github.com/bigscience-workshop/data-preparation/tree/main/preprocessing/training/02_pii)). The [`detect-secrets`](https://github.com/Yelp/detect-secrets) package is used for finding secrets keys. Additionally filters are implemented on top to reduce the number of false positives, using the [gibberish-detector](https://github.com/domanchi/gibberish-detector) package is used for that.
+The component detects emails, IP addresses and API/SSH keys in text datasets (in particular datasets of source code). Regexes are used for emails and IP addresses (they are adapted from [BigScience PII pipeline](https://github.com/bigscience-workshop/data-preparation/tree/main/preprocessing/training/02_pii)). The [`detect-secrets`](https://github.com/Yelp/detect-secrets) package is used for finding secrets keys. Additionally filters are implemented on top to reduce the number of false positives, using the [gibberish-detector](https://github.com/domanchi/gibberish-detector) package.
 
 ### PII redaction
 
