@@ -2,7 +2,7 @@ resource "google_project_iam_member" "user_roles" {
   for_each = toset(var.user_roles)
   role     = each.key
   project  = var.project
-  member   = "group:fondant@ml6.eu"
+  member   = "group:team@skyhaus.com"
 }
 
 variable "user_roles" {
@@ -21,5 +21,5 @@ variable "user_roles" {
 resource "google_service_account_iam_member" "user_svc_user" {
   service_account_id = module.gke_cluster.service_account.id
   role               = "roles/iam.serviceAccountUser"
-  member             = "group:fondant@ml6.eu"
+  member             = "group:team@skyhaus.com"
 }
