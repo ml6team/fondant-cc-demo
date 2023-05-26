@@ -1,7 +1,8 @@
 # TODO: Rename (also image)
 name: Custom component
 description: Component that does something custom
-image: europe-west4-docker.pkg.dev/boreal-array-387713/boreal-array-387713-default-repository/components/custom_component:latest
+# TODO: update image location
+image: europe-west4-docker.pkg.dev/boreal-array-387713/boreal-array-387713-default-repository/components/UPDATE_THIS:latest
 
 consumes:
   code:
