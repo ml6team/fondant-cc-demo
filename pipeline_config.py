@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PipelineConfigs:
+class PipelineConfig:
     """
     General Pipeline Configs
     Params:
