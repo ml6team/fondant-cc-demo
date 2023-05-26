@@ -1,5 +1,10 @@
-export BASE_PATH="/Users/nielsrogge/Documents/fondant_artifacts_starcoder"
-export METADATA='{"run_id":"test-demo", "base_path":"/Users/nielsrogge/Documents/fondant_artifacts_starcoder"}'
+export BASE_PATH="$PWD/fondant_artifacts_starcoder"
+export METADATA="{'run_id':'test-demo', 'base_path':'${BASE_PATH}'}"
+
+# Using sed to replace single quotes with double quotes
+METADATA=$(echo "$METADATA" | sed "s/'/\"/g")
+
+mkdir ${BASE_PATH}
 
 cd components/load_from_hub_stack/src
 python main.py \
