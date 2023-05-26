@@ -1,5 +1,17 @@
 # fondant-cc-demo
 
+The goal of this demo is get yourself familiar with the Fondant framework.
+
+In this demo, we'll be building a simple data preparation pipeline for a code assistant (like [StarCoder](https://huggingface.co/blog/starcoder) or [Github CoPilot](https://github.com/features/copilot)).
+
+The pipeline consists of 3 components. We already implemented 2 of them, it's up to you to implement the one in the middle.
+
+The first component loads a code dataset from the 🤗 [hub](https://huggingface.co/), the next component filters this dataset (based on a metric of your choice, like number of lines of code) and the final component removes PII (Personal Identifiable Information) from the code.
+
+This way, we end up with a higher quality, anonymized dataset on which we can train a language model.
+
+<img width="900" alt="Screenshot 2023-05-26 at 09 31 09" src="https://github.com/ml6team/fondant-cc-demo/assets/48327001/387ae2ff-27e2-400b-93fd-f55096854749">
+
 ## Install requirements
 
 This will install Fondant from PyPI
