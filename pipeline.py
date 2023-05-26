@@ -22,23 +22,26 @@ pipeline = Pipeline(
 )
 client = Client(host=PipelineConfig.HOST)
 
+
+# define ops
 load_from_hub_op = ComponentOp(
     component_spec_path="components/load_from_hub_stack/fondant_component.yaml",
     arguments={"dataset_name": "ml6team/the-stack-smol-python"},
 )
-
-# TODO: add your component here
-# your_custom_component_op = ComponentOp(
-#     component_spec_path="components/your_custom_component/fondant_component.yaml",
-#     arguments={},  # TODO: insert your component's arguments here
-# )
-
+filter_metadata_op = ComponentOp(
+    component_spec_path="components/filter_metadata/fondant_component.yaml",
+    arguments={
+        "avg_line_length_threshold": 10,
+        "max_line_length_threshold": 100,
+        "alphanum_fraction_threshold": 0.25,
+    },
+)
 pii_redaction_op = ComponentOp(
     component_spec_path="components/pii_redaction/fondant_component.yaml",
 )
+# add ops to pipeline
 pipeline.add_op(load_from_hub_op)
-# TODO: Add your component op to the pipeline
-# pipeline.add_op(comments_filtering_op, dependencies=your_custom_component_op)
-pipeline.add_op(pii_redaction_op, dependencies=load_from_hub_op)
+pipeline.add_op(filter_metadata_op, dependencies=load_from_hub_op)
+pipeline.add_op(pii_redaction_op, dependencies=filter_metadata_op)
 
 client.compile_and_run(pipeline=pipeline)
