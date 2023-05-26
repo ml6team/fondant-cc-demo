@@ -38,7 +38,8 @@ pii_redaction_op = ComponentOp(
 )
 pipeline.add_op(load_from_hub_op)
 # TODO: Add your component op to the pipeline
-# pipeline.add_op(comments_filtering_op, dependencies=your_custom_component_op)
+# pipeline.add_op(your_custom_component_op, dependencies=load_from_hub_op)
+# TODO: Update the dependencies to include your component 
 pipeline.add_op(pii_redaction_op, dependencies=load_from_hub_op)
 
 client.compile_and_run(pipeline=pipeline)
